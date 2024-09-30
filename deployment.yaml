@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: qbittorrent-bot
-  namespace: noterrent
+  namespace: qbittorrent-bot
 spec:
   selector:
     matchLabels:
