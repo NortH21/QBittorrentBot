@@ -24,7 +24,7 @@ spec:
           name: config-json
           subPath: config.json
         securityContext:
-          runAsNonRoot: true
+          runAsNonRoot: false
         resources:
           limits:
             cpu: "1"
