@@ -169,4 +169,4 @@ config.json
 *.sqlite
 /docker_folder
 
-config.yaml
+config.json
