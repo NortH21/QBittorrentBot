@@ -19,8 +19,8 @@ spec:
       containers:
       - name: qbittorrent-bot
         image: ch3p4ll3/qbittorrent-bot:latest
-        command: ["/bin/bash","-c","--"]
-        args: ["while true; do sleep 30; done;"]
+        # command: ["/bin/bash","-c","--"]
+        # args: ["while true; do sleep 30; done;"]
         volumeMounts:
         - mountPath: /app/config/config.json
           name: config-json
@@ -35,6 +35,6 @@ spec:
             cpu: "0.5"
             memory: "256Mi"
       volumes:
-      - name: config-json
+      - name: config-json #kubectl create configmap config-json --from-file=config.json -n qbittorrent-bot
         configMap: 
           name: config-json
