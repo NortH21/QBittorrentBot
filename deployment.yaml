@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbittorrent-bot
+  namespace: qbittorrent-bot
+spec:
+  selector:
+    matchLabels:
+      app: qbittorrent-bot
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: qbittorrent-bot
+    spec:
+      containers:
+      - name: qbittorrent-bot
+        image: ch3p4ll3/qbittorrent-bot:latest
+        volumeMounts:
+        - mountPath: /app/config/
+          name: config-json
+        securityContext:
+          runAsNonRoot: true
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "0.5"
+            memory: "256Mi"
+
+volumes:
+- name: config-json
+  configMap: 
+    name: config-json
+    items:
+      - key: config.json
+        path: config.json
