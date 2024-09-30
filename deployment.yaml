@@ -34,7 +34,14 @@ spec:
           requests:
             cpu: "0.5"
             memory: "256Mi"
+      # volumes:
+      # - name: config-json
+      #   configMap: 
+      #     name: config-json
       volumes:
       - name: config-json
         configMap: 
           name: config-json
+          items:
+            - key: config.json
+              path: config.json
