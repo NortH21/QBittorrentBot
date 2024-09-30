@@ -20,8 +20,9 @@ spec:
       - name: qbittorrent-bot
         image: ch3p4ll3/qbittorrent-bot:latest
         volumeMounts:
-        - mountPath: /app/config/
+        - mountPath: /app/config/config.json
           name: config-json
+          subPath: config.json
         securityContext:
           runAsNonRoot: true
         resources:
@@ -31,11 +32,7 @@ spec:
           requests:
             cpu: "0.5"
             memory: "256Mi"
-
-volumes:
-- name: config-json
-  configMap: 
-    name: config-json
-    items:
-      - key: config.json
-        path: config.json
+      volumes:
+      - name: config-json
+        configMap: 
+          name: config-json
