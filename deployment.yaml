@@ -22,8 +22,8 @@ spec:
         command: ["/bin/bash","-c","--"]
         args: ["while true; do sleep 30; done;"]
         volumeMounts:
-        - name: config-volume
-          mountPath: /app/config
+        - mountPath: /app/config/config.json
+          name: config-json
           subPath: config.json
         securityContext:
           runAsNonRoot: false
@@ -35,6 +35,6 @@ spec:
             cpu: "0.5"
             memory: "256Mi"
       volumes:
-      - name: config-volume
+      - name: config-json
         configMap: 
           name: config-json
